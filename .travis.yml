@@ -36,14 +36,6 @@ matrix:
 before_install:
     - eval "${MATRIX_EVAL}"
 
-os:
-  - osx
-  - linux
-
-compiler:
-  - clang
-  - gcc
-
 before_script:
   - make clean
 
