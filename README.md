@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/gefjon/data_structures.svg?branch=master)](https://travis-ci.org/gefjon/data_structures)
 # Various data structures in C++
 
 I'm starting at NYU in September, and I plan on testing out of their early
