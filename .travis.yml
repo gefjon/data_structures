@@ -1,0 +1,15 @@
+language: cpp
+
+os:
+  - osx
+  - linux
+
+compiler:
+  - clang
+  - gcc
+
+before_script:
+  - make clean
+
+script:
+  - make test
