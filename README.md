@@ -20,7 +20,7 @@ a language which uses recursion so extensively that it does not include loops)
 and implementing each thing in C++. This is the first time I've ever written
 C++, so don't expect perfect code, but I am doing my best to learn best
 practices and use of the standard library (yes, I know that C++ has
-`std::list`/`std::forward_list`, `std::stack`, `std::map`, `std::set`, and
+`std::list`, `std::forward_list`, `std::stack`, `std::map`, `std::set`, and
 `std::multiset`, and I'm sure some sorting utilities in `<algorithm>`; I mean
 standard library components like `std::shared_ptr` and `<cstdint>`).
 
