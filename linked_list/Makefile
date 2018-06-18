@@ -4,7 +4,6 @@ TARGET_FLAGS ?= -stdlib=libc++
 WARNINS ?= -Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic
 CPPFLAGS ?= $(WARNINGS) -g -std=c++17 $(TARGET_FLAGS)
 BUILD_DIR ?= ./build
-CXX ?= clang++
 MKDIR_P ?= mkdir -p
 RM ?= rm
 
