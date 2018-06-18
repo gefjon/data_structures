@@ -6,12 +6,12 @@ either C++ or Java, neither of which I have ever written. Their ["Intro to Data
 Structures" placement test](https://cs.nyu.edu/home/undergrad/placement.html)
 asks that students demonstrate knowledge and understanding of:
 
-* recursion
-* linked lists
-* stacks
-* queues
-* binary trees
-* merge sort
+* [ ] recursion
+* [x] [linked lists](linked_list)
+* [x] [stacks](stack)
+* [x] [queues](queue)
+* [ ] binary trees
+* [ ] merge sort
 
 and specifies that "Students may use either C++ or Java to answer the
 questions." As practice, I'm going down the list (skipping recursion, because
