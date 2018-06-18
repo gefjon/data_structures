@@ -24,6 +24,8 @@ practices and use of the standard library (yes, I know that C++ has
 `std::multiset`, and I'm sure some sorting utilities in `<algorithm>`; I mean
 standard library components like `std::shared_ptr` and `<cstdint>`).
 
+## Tests
+
 I'm using [Catch2](https://github.com/catchorg/Catch2) for testing. Catch2 is
 [included](catch.hpp) in the root.
 
@@ -40,6 +42,19 @@ each module subdirectory. It assumes that:
 * It contains a test file named `test.cpp` which defines `main`.
 
 See any of the included modules for examples.
+
+## My setup
+
+I'm on macOS High Sierra (10.13.5 at the time of writing, but I do my best to
+keep up to date). My compiler is `clang++`:
+
+```
+Apple LLVM version 10.0.0 (clang-1000.10.25.5)
+Target: x86_64-apple-darwin17.6.0
+Thread model: posix
+```
+
+and I use GNU Make 3.81.
 
 ## License
 

@@ -28,7 +28,7 @@ namespace LinkedList {
   }
 
   template< class T >
-  std::shared_ptr< Node< T > > Node< T >::Cdr() {
+  std::shared_ptr< Node< T > >& Node< T >::Cdr() {
     return this->next_;
   }
 

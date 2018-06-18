@@ -19,7 +19,7 @@ namespace LinkedList {
     Node< T >& operator=(const Node< T >&);
 
     T& Car();
-    std::shared_ptr< Node< T > > Cdr();
+    std::shared_ptr< Node< T > >& Cdr();
 
     Node< T > Prepend(T);
   };
