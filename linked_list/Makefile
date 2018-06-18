@@ -1,8 +1,7 @@
 MODULE ?= $(notdir $(CURDIR))
-LINKER_FLAGS ?= $(TARGET_FLAGS) $(LDFLAGS)
-TARGET_FLAGS ?= -stdlib=libc++
+LINKER_FLAGS ?= $(LDFLAGS)
 WARNINS ?= -Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic
-CPPFLAGS ?= $(WARNINGS) -g -std=c++17 $(TARGET_FLAGS)
+CPPFLAGS ?= $(WARNINGS) -g -std=c++14
 BUILD_DIR ?= ./build
 MKDIR_P ?= mkdir -p
 RM ?= rm
@@ -27,3 +26,7 @@ $(BUILD_DIR)/test.o: test.cpp
 $(BUILD_DIR)/test: $(BUILD_DIR)/test.o $(BUILD_DIR)/$(MODULE).o
 	$(MKDIR_P) $(dir $@)
 	$(CXX) $(LINKER_FLAGS) $^ -o $@
+
+.PHONY: print_module
+print_module:
+	echo $(MODULE)
