@@ -19,7 +19,7 @@ $(BUILD_DIR)/$(MODULE).o: $(MODULE).cpp $(MODULE).hpp $(MODULE).tpp
 	$(MKDIR_P) $(dir $@)
 	$(CXX) -c $(CPPFLAGS) -c $< -o $@
 
-$(BUILD_DIR)/test.o: test.cpp
+$(BUILD_DIR)/test.o: test.cpp $(MODULE).hpp $(MODULE).tpp
 	$(MKDIR_P) $(dir $@)
 	$(CXX) -c $(CPPFLAGS) -c $< -o $@
 
