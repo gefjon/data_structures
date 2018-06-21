@@ -1,0 +1,80 @@
+#define CATCH_CONFIG_MAIN
+
+#include "../catch.hpp"
+#include "binary_tree.hpp"
+#include <tuple>
+#include <string>
+#include <iostream>
+
+typedef int Key;
+typedef std::string Value;
+typedef std::tuple< Key, Value > Elem;
+
+bool MapCmp(Elem const& left, Elem const& right) {
+  return std::get<0>(left) < std::get<0>(right);
+}
+
+bool MapEq(Elem const& left, Elem const& right) {
+  return std::get<0>(left) == std::get<0>(right);
+}
+
+bool TreeCmp(unsigned int const& left, unsigned int const& right) {
+  return left < right;
+}
+
+bool TreeEq(unsigned int const& left, unsigned int const& right) {
+  return left == right;
+}
+
+typedef BinaryTree::BTree< Elem, MapCmp, MapEq > BMap;
+typedef BinaryTree::BTree< unsigned int, TreeCmp, TreeEq > Tree;
+
+TEST_CASE( "Simple unsigned int tree", "[BTree]" ) {  
+  Tree tree;
+  tree.Insert(0xdeadbeef);
+  tree.Insert(0xffffffff);
+  tree.Insert(0x0);
+
+  CHECK( tree.Search(0xdeadbeef)->Elem() == 0xdeadbeef );
+  CHECK( tree.Search(0xffffffff)->Elem() == 0xffffffff );
+  CHECK( tree.Search(0x0)->Elem() == 0x0 );
+}
+
+TEST_CASE( "Map of (int, string)", "[BTree]" ) {
+  BMap map;
+  map.Insert(std::make_tuple(5, std::string("Five")));
+  map.Insert(std::make_tuple(2, std::string("Two")));
+  map.Insert(std::make_tuple(7, std::string("Seven")));
+
+  std::cout << "About to test that the map contains (5, _)" << std::endl;
+  CHECK(
+        std::get<1>(
+                    map.Search(
+                                 std::make_tuple(5, std::string())
+                               )->Elem()
+                      )
+        .compare("Five") == 0
+        );
+
+  std::cout << "(5, _) passed, about to test for (7, _)" << std::endl;
+
+  CHECK(
+        std::get<1>(
+                    map.Search(
+                                 std::make_tuple(7, std::string())
+                               )->Elem()
+                    )
+        .compare("Seven") == 0
+        );
+
+  std::cout << "(7, _) passed, about to test for (3, _)" << std::endl;
+
+  CHECK(
+        std::get<1>(
+                    map.Search(
+                                 std::make_tuple(2, std::string())
+                               )->Elem()
+                    )
+        .compare("Two") == 0
+        );
+}
