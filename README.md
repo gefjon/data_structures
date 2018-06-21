@@ -11,8 +11,8 @@ asks that students demonstrate knowledge and understanding of:
 * [x] [linked lists](linked_list)
 * [x] [stacks](stack)
 * [x] [queues](queue)
-* [ ] binary trees
-* [ ] merge sort
+* [x] [binary trees](binary_tree)
+* [x] [heap sort](heap_sort)
 
 and specifies that "Students may use either C++ or Java to answer the
 questions." As practice, I'm going down the list (skipping recursion, because

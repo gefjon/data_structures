@@ -33,6 +33,11 @@ namespace BinaryTree {
   }
 
   template< class T, BTREE_COMPARATOR(T, LT), BTREE_COMPARATOR(T, EQ) >
+  bool BTree< T, LT, EQ >::Node::HasChild() {
+    return this->Left() || this->Right();
+  }
+
+  template< class T, BTREE_COMPARATOR(T, LT), BTREE_COMPARATOR(T, EQ) >
   BTree< T, LT, EQ >::BTree() {};
 
   template< class T, BTREE_COMPARATOR(T, LT), BTREE_COMPARATOR(T, EQ) >
@@ -79,6 +84,37 @@ namespace BinaryTree {
         }
       }
       assert( false );
+    }
+  }
+
+  template< class T, BTREE_COMPARATOR(T, LT), BTREE_COMPARATOR(T, EQ) >
+  T BTree< T, LT, EQ >::RemoveLeast() {
+    if (!this->root_) {
+      throw new EmptyBTreeException();
+    }
+    return this->RemoveLeast(this->root_);
+  }
+
+  template< class T, BTREE_COMPARATOR(T, LT), BTREE_COMPARATOR(T, EQ) >
+  BTree< T, LT, EQ >::operator bool() const noexcept {
+    return !!this->root_;
+  }
+
+  template< class T, BTREE_COMPARATOR(T, LT), BTREE_COMPARATOR(T, EQ) >
+  T BTree< T, LT, EQ >::RemoveLeast(std::shared_ptr< Node >& parent) {
+    assert( !!parent );
+    
+    if (!parent->HasChild()) {
+      auto copy = parent;
+      parent = nullptr;
+      return std::move(copy->Elem());
+    } else if (parent->Left()) {
+      return this->RemoveLeast(parent->Left());
+    } else {
+      auto copy = parent;
+      auto right = parent->Right();
+      parent = right;
+      return std::move(copy->Elem());
     }
   }
 }

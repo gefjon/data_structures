@@ -5,6 +5,8 @@
 #include <tuple>
 #include <string>
 #include <iostream>
+#include <algorithm>
+#include <vector>
 
 typedef int Key;
 typedef std::string Value;
@@ -46,7 +48,6 @@ TEST_CASE( "Map of (int, string)", "[BTree]" ) {
   map.Insert(std::make_tuple(2, std::string("Two")));
   map.Insert(std::make_tuple(7, std::string("Seven")));
 
-  std::cout << "About to test that the map contains (5, _)" << std::endl;
   CHECK(
         std::get<1>(
                     map.Search(
@@ -56,7 +57,6 @@ TEST_CASE( "Map of (int, string)", "[BTree]" ) {
         .compare("Five") == 0
         );
 
-  std::cout << "(5, _) passed, about to test for (7, _)" << std::endl;
 
   CHECK(
         std::get<1>(
@@ -67,8 +67,6 @@ TEST_CASE( "Map of (int, string)", "[BTree]" ) {
         .compare("Seven") == 0
         );
 
-  std::cout << "(7, _) passed, about to test for (3, _)" << std::endl;
-
   CHECK(
         std::get<1>(
                     map.Search(
@@ -77,4 +75,24 @@ TEST_CASE( "Map of (int, string)", "[BTree]" ) {
                     )
         .compare("Two") == 0
         );
+}
+
+TEST_CASE( "Remove least element from BTree", "[BTree]" ) {
+  std::vector< unsigned int > ints;
+  for (unsigned int i = 0; i < 10; i++) {
+    ints.push_back(i);
+  }
+  
+  std::random_shuffle(ints.begin(), ints.end());
+
+  std::vector< unsigned int >::iterator iter;
+
+  Tree tree;
+  for (iter = ints.begin(); iter != ints.end(); iter++) {
+    tree.Insert(*iter);
+  }
+
+  for (unsigned int i = 0; i < 10; i++) {
+    CHECK( tree.RemoveLeast() == i );
+  }
 }
