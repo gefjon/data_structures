@@ -13,6 +13,7 @@ asks that students demonstrate knowledge and understanding of:
 * [x] [queues](queue)
 * [x] [binary trees](binary_tree)
 * [x] [heap sort](heap_sort)
+* [x] [merge sort](merge_sort)
 
 and specifies that "Students may use either C++ or Java to answer the
 questions." As practice, I'm going down the list (skipping recursion, because
